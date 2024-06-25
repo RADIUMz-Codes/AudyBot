@@ -1,26 +1,22 @@
-import React, { useEffect, useState, useRef } from "react";
+import React from "react";
 import {
     AppBar,
     Toolbar,
     Box,
     Typography,
     CssBaseline,
-    Button,
+    Button
 } from "@mui/material";
+import { Link, Outlet } from "react-router-dom";
 
-const navItems = ["App", "Home", "Test"];
-function Navbar({setNavbarHeight}) {
+function Navbar() {
     
-    const ref = useRef(null);
 
-    useEffect(() => {
-        setNavbarHeight(ref.current.clientHeight);
-        console.log(ref.current.clientHeight)
-    },[setNavbarHeight]);
+    
     return (
-        <Box sx={{ display: "flex" }} >
+        <Box sx={{ display: "flex" }}>
             <CssBaseline />
-            <AppBar component="nav" ref = {ref}>
+            <AppBar component="nav">
                 <Toolbar>
                     <Typography
                         variant="h6"
@@ -32,12 +28,13 @@ function Navbar({setNavbarHeight}) {
                     >
                         KPMG
                     </Typography>
-                    <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                        {navItems.map((item) => (
-                            <Button key={item} sx={{ color: "#fff" }}>
-                                {item}
-                            </Button>
-                        ))}
+                    <Box
+                        sx={{ display: { xs: "none", sm: "block" } }}
+                    >
+                        <a href="/">Home</a>
+                        <a href="/services">Services</a>
+                        <a href="/team">Team</a>
+                        <a href="/demo">Demo</a>
                     </Box>
                 </Toolbar>
             </AppBar>
